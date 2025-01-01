@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home"
 import User from "../Pages/User/User"
 import Login from "../Pages/Login/Login"
 import UserProtected from "./UserProtected"
+import Category from "../Pages/Category/Category"
 
 
 
@@ -13,8 +14,9 @@ const AppRouter = () => {
         <Routes>
             <Route path="/" element={<MainLayout/>}>
                 <Route index element={<Home/>} />
+                <Route path="category" element={<Category/>} />
                 <Route element={<UserProtected/>}>
-                    <Route path="user" element={<User/>} />
+                    <Route path="profile" element={<User/>} />
                 </Route>
             </Route> 
             <Route path="/login" element={<Login/>}/>

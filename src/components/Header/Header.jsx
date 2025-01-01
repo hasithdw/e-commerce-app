@@ -9,7 +9,7 @@ const Header = () => {
     const[isSearch,SetIsSearch]=useState(false);
   return (
     <div>
-      <header className='w-full p-5 bg-my-background flex justify-between items-center fixed top-0 left-0 z-50 shadow-lg'>
+      <header className='w-full p-4 bg-my-background flex justify-between items-center fixed top-0 left-0 z-50 shadow-lg'>
             <div className='flex space-x-4 items-center'>
                 <IconButton><MenuIcon/></IconButton>
                 <h1 className='text-2xl font-medium' style={{
@@ -20,16 +20,27 @@ const Header = () => {
                             'inline-block'
                     :'inline-block'
                 }}>HD<span className='text-red-900'>W</span></h1>
-                <div className='flex items-center bg-slate-200 rounded-full overflow-hidden'>
+                <div style={{
+                    backgroundColor:
+                    window.innerWidth<640?
+                    isSearch?
+                        '#ebebeb' :
+                        'inherit'
+                    :'#ebebeb'
+
+                }} className='flex items-center bg-[#cccccc] rounded-full overflow-hidden'>
                     <input type="text" style={{
                         display:
                         window.innerWidth<640?
                             isSearch?
                                 'inline-block' :
                                 'none'
-                        :'inline-block'
+                        :'inline-block',
+                        transition:'ease-in'
                         
-                        }} placeholder="Search" className=' outline-none p-2 text-sm bg-inherit w-40'/>
+                        }} 
+                        placeholder="Search" 
+                        className=' outline-none p-2 text-sm bg-inherit w-40'/>
                     <IconButton onClick={()=>{
                         if(window.innerWidth<640){
                             SetIsSearch(!isSearch)
@@ -40,7 +51,14 @@ const Header = () => {
                     </IconButton>
                 </div>
             </div>
-            <IconButton><ShoppingCartIcon/></IconButton>
+            <IconButton>
+                <div className='relative rounded-full p-2'>
+                    <ShoppingCartIcon />
+                    <div className='absolute top-0 right-0  text-white font-bold bg-black text-xs rounded-full w-3'>
+                        2
+                    </div>
+                </div>
+            </IconButton>
       </header>
     </div>
   )

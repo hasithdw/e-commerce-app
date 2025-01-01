@@ -1,12 +1,20 @@
+import { useState } from "react"
 import Ads from "./Ads"
 import Product from "./Product"
+import Loading from "../../components/Loading/Loading"
 
 const Home = () => {
+
+  const[loading,setLoading]=useState(false)
+
+  if(loading) return <Loading/>
+
+
   return (
-    <div className="py-[100px] px-5 w-full h-screen overflow-scroll">
-        Home Hasi
+    <div className="py-[105px] px-5 w-full h-screen overflow-scroll">
         <Ads/>
-        <Product title="Trending Products" rowscount={1} slidesPerView={3} />
+        <Product title="Trending Products"  />
+        <Product title="Trending Products"  />
       
     </div>
   )
